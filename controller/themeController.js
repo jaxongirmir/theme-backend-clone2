@@ -22,7 +22,6 @@ const getOneTheme = async (req, res) => {
   const { id } = req.body
   try {
     let AllTheme = await themeDB.findById(id)
-    console.log(AllTheme)
     if (!AllTheme) {
       return res.status(404).json({
         status: 'warning',

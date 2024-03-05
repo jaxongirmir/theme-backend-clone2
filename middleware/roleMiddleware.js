@@ -7,7 +7,6 @@ module.exports = function (roles) {
     }
     try {
       const token = req.headers.authorization.split(' ')[1]
-      console.log(token)
       if (!token) {
         return res.status(403).json({ message: 'User not autorithate' })
       }
@@ -15,7 +14,6 @@ module.exports = function (roles) {
         token,
         process.env.ACCESS_TOKEN_SECRET
       )
-      console.log(roles, userRoles)
       let hashRole = false
       userRoles.forEach(role => {
         if (roles.includes(role)) {
@@ -27,8 +25,7 @@ module.exports = function (roles) {
       }
       next()
     } catch (err) {
-      console.log(err)
-      return res.status(403).json({ msg: 'you are not 2authorized' })
+      return res.status(403).json({ msg: 'you are not authorized' })
     }
   }
 }
