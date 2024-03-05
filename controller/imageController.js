@@ -5,7 +5,7 @@ const fs = require('fs')
 
 const createImg = async (req, res) => {
   try {
-    const imageUrl = `http://localhost:8000/profile/${req.file.filename}`
+    const imageUrl = `https://theme-backend-clone2.onrender.com/profile/${req.file.filename}`
     const image = new imgDB({ imageUrl })
     const saved = await image.save()
     res.json({
